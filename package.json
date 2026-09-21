@@ -1,0 +1,18 @@
+{
+  "name": "wechat-love-insight-preview",
+  "private": true,
+  "version": "0.3.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@vitejs/plugin-vue": "latest",
+    "echarts": "latest",
+    "echarts-wordcloud": "latest",
+    "vite": "latest",
+    "vue": "latest"
+  }
+}
