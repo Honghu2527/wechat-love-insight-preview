@@ -4,6 +4,7 @@ import * as echarts from 'echarts';
 import 'echarts-wordcloud';
 import AdvancedReport from './components/AdvancedReport.vue';
 import GlobalDenseHeatmap from './components/GlobalDenseHeatmap.vue';
+import RelationshipPersonality from './components/RelationshipPersonality.vue';
 import TimeMicroscope from './components/TimeMicroscope.vue';
 import { parseWeChatHtml, readHtmlFile } from './lib/parser';
 import {
@@ -448,8 +449,14 @@ onBeforeUnmount(() => {
 
       <AdvancedReport :messages="filteredMessages" :self-name="selfName" :partner-name="partnerName" />
 
+      <RelationshipPersonality
+        :messages="messages"
+        :self-name="selfName"
+        :partner-name="partnerName"
+      />
+
       <footer class="footer-card">
-        <div><strong>下一版</strong><span>年度故事翻页 · 自定义纪念日 · 长图导出 · 可打印情侣纪念册 · 区间故事卡</span></div>
+        <div><strong>下一版</strong><span>年度故事翻页 · 自定义纪念日 · 长图导出 · 可打印情侣纪念册 · 关系画像</span></div>
         <span class="footer-lock">本地分析 🔒</span>
       </footer>
     </template>
