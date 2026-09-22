@@ -3,6 +3,7 @@ import { computed, nextTick, onBeforeUnmount, ref, watch } from 'vue';
 import * as echarts from 'echarts';
 import 'echarts-wordcloud';
 import AdvancedReport from './components/AdvancedReport.vue';
+import GlobalDenseHeatmap from './components/GlobalDenseHeatmap.vue';
 import TimeMicroscope from './components/TimeMicroscope.vue';
 import { parseWeChatHtml, readHtmlFile } from './lib/parser';
 import {
@@ -82,6 +83,15 @@ function triggerUpload() {
 
 function exportReportPdf() {
   window.print();
+}
+
+async function focusMicroscopeFromGlobal(date) {
+  const year = Number(String(date).slice(0, 4));
+  if (Number.isFinite(year) && years.value.includes(year)) {
+    selectedYear.value = year;
+  }
+  await nextTick();
+  microscopeRef.value?.focusDate(date, 'day');
 }
 
 async function loadFile(file) {
@@ -369,6 +379,13 @@ onBeforeUnmount(() => {
         <article class="stat-card"><span>最长连续聊天</span><strong>{{ overview.longestStreak }}</strong><small>天</small></article>
         <article class="stat-card wide"><span>这一年的聊天跨度</span><strong class="date-range">{{ formatDate(overview.firstDate) }} → {{ formatDate(overview.lastDate) }}</strong><small v-if="overview.busiest">最能聊的一天：{{ overview.busiest.date }} · {{ formatNumber(overview.busiest.value) }} 条</small></article>
       </section>
+
+      <GlobalDenseHeatmap
+        :messages="messages"
+        :self-name="selfName"
+        :partner-name="partnerName"
+        @focus-date="focusMicroscopeFromGlobal"
+      />
 
       <section class="panel full-panel">
         <div class="panel-heading"><div><p class="section-kicker">CALENDAR HEATMAP</p><h2>聊天日历热力图</h2></div><p>颜色越深，这一天你们越能聊。点击任意日期，可直接放大到当天的 30 分钟级热图。</p></div>
