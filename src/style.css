@@ -334,3 +334,43 @@ select {
   .tall-chart { height: 430px; }
   .footer-card { flex-direction: column; align-items: flex-start; }
 }
+
+
+@media print {
+  :root,
+  body {
+    background: #fff !important;
+  }
+
+  .page-shell {
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .control-bar,
+  .no-print {
+    display: none !important;
+  }
+
+  .hero {
+    padding: 10px 0 18px !important;
+  }
+
+  .panel,
+  .stat-card,
+  .identity-card,
+  .footer-card {
+    box-shadow: none !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .two-column {
+    grid-template-columns: 1fr !important;
+  }
+
+  .chart {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
