@@ -374,3 +374,11 @@ select {
     page-break-inside: avoid;
   }
 }
+
+
+@media print {
+  body.memory-book-print .page-shell > * { display: none !important; }
+  body.memory-book-print .page-shell > #memory-book { display: block !important; }
+  body.memory-book-print #memory-book { margin: 0 !important; }
+  body.memory-book-print #memory-book .no-print { display: none !important; }
+}
