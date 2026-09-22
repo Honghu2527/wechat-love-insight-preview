@@ -1,7 +1,7 @@
 {
   "name": "wechat-love-insight-preview",
   "private": true,
-  "version": "0.6.0",
+  "version": "0.7.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -13,6 +13,8 @@
     "echarts": "latest",
     "echarts-wordcloud": "latest",
     "vite": "latest",
-    "vue": "latest"
+    "vue": "latest",
+    "exifr": "^7.1.3",
+    "jszip": "^3.10.1"
   }
 }
