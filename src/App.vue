@@ -4,6 +4,7 @@ import * as echarts from 'echarts';
 import 'echarts-wordcloud';
 import AdvancedReport from './components/AdvancedReport.vue';
 import GlobalDenseHeatmap from './components/GlobalDenseHeatmap.vue';
+import MemoryBook from './components/MemoryBook.vue';
 import RelationshipPersonality from './components/RelationshipPersonality.vue';
 import TimeMicroscope from './components/TimeMicroscope.vue';
 import { parseWeChatHtml, readHtmlFile } from './lib/parser';
@@ -450,6 +451,12 @@ onBeforeUnmount(() => {
       <AdvancedReport :messages="filteredMessages" :self-name="selfName" :partner-name="partnerName" />
 
       <RelationshipPersonality
+        :messages="messages"
+        :self-name="selfName"
+        :partner-name="partnerName"
+      />
+
+      <MemoryBook
         :messages="messages"
         :self-name="selfName"
         :partner-name="partnerName"
