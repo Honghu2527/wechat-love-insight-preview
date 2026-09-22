@@ -80,6 +80,10 @@ function triggerUpload() {
   fileInput.value?.click();
 }
 
+function exportReportPdf() {
+  window.print();
+}
+
 async function loadFile(file) {
   if (!file) return;
   loading.value = true;
@@ -346,6 +350,7 @@ onBeforeUnmount(() => {
               <option v-for="year in years" :key="year" :value="year">{{ year }}</option>
             </select>
           </label>
+          <button class="ghost-btn" @click="exportReportPdf">打印 / 导出 PDF</button>
           <button class="ghost-btn" @click="triggerUpload">换一个文件</button>
           <input ref="fileInput" class="hidden-input" type="file" accept=".html,.htm,text/html" @change="onFileChange" />
         </div>
@@ -427,7 +432,7 @@ onBeforeUnmount(() => {
       <AdvancedReport :messages="filteredMessages" :self-name="selfName" :partner-name="partnerName" />
 
       <footer class="footer-card">
-        <div><strong>下一版</strong><span>年度故事翻页 · 自定义纪念日 · 长图导出 · 可打印情侣纪念册</span></div>
+        <div><strong>下一版</strong><span>年度故事翻页 · 自定义纪念日 · 长图导出 · 可打印情侣纪念册 · 区间故事卡</span></div>
         <span class="footer-lock">本地分析 🔒</span>
       </footer>
     </template>
